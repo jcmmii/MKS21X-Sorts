@@ -27,7 +27,14 @@ public class Sorts {
   public static void main(String[] args) {
     int[] ary = {-2,-4,0,5,3,1};
     selectionSort(ary);
-    System.out.println("Should print -4,2,0,1,3,5");
+    System.out.println("Test 1: Should print -4,2,0,1,3,5");
     System.out.println(toString(ary));
+
+    System.out.println();
+
+    int[] ary2 = {10000,-999,8,2,5};
+    selectionSort(ary2);
+    System.out.println("Test 2: Should print -999,2,5,8,10000");
+    System.out.println(toString(ary2));
   }
 }
