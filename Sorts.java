@@ -24,6 +24,7 @@ public class Sorts {
     ret = "[" + ret + "]"; //to make it into array format
     return ret;
   }
+
   public static void main(String[] args) {
     int[] ary = {-2,-4,0,5,3,1};
     selectionSort(ary);
@@ -38,3 +39,6 @@ public class Sorts {
     System.out.println(toString(ary2));
   }
 }
+
+//forgot to continously commit while working on this and only realized after!
+//will commit more next time
