@@ -17,12 +17,14 @@ public class Sorts {
 
   public static String toString(int[] ary) {
     String ret = "";
-    for (int i = 0; i < ary.length; i++) {
-      ret = ret + ary[i] + ",";
-    }
-    ret = ret.substring(0,ret.length()-1); //to eliminate the last comma
-    ret = "[" + ret + "]"; //to make it into array format
-    return ret;
+    if (ary.length > 0) {
+      for (int i = 0; i < ary.length; i++) {
+        ret = ret + ary[i] + ",";
+      }
+      ret = ret.substring(0,ret.length()-1); //to eliminate the last comma
+      ret = "[" + ret + "]"; //to make it into array format
+      return ret;
+    } else return "[]";
   }
 
   public static void main(String[] args) {
@@ -37,6 +39,14 @@ public class Sorts {
     selectionSort(ary2);
     System.out.println("Test 2: Should print -999,2,5,8,10000");
     System.out.println(toString(ary2));
+
+    System.out.println();
+
+    int[] ary3 = {};
+    selectionSort(ary3);
+    System.out.println("Test 3: Should print nothing ");
+    System.out.println(toString(ary3));
+
   }
 }
 
