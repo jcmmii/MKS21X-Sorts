@@ -1,44 +1,51 @@
 public class Sorts {
-
-/*
-  //selectionSort
-  public static void selectionSort(int[] ary) {
-    for (int x = 0; x < ary.length; x++) {
-      int min = ary[x]; //assumes smallest value in array is current value
+  /**Selection sort of an int array.
+  *Upon completion, the elements of the array will be in increasing order.
+  *@param data the elements to be sorted.
+  */
+  public static void selectionSort(int[] data) {
+    for (int x = 0; x < data.length; x++) {
+      int min = data[x]; //assumes smallest value in array is current value
       int minInd = x;   //assumes index of smallest value is current index
-      for (int y = x; y < ary.length; y++) { //starts counting at current index until end
-        if (ary[y] < min) {
-          min = ary[y]; //if a lesser value is found, sets minimum and miniumIndex
+      for (int y = x; y < data.length; y++) { //starts counting at current index until end
+        if (data[y] < min) {
+          min = data[y]; //if a lesser value is found, sets minimum and miniumIndex
           minInd = y;
         }
       }
-      int oldVal = ary[x]; //temporarily holds the old value of current index to set up swapping
-      ary[x] = ary[minInd]; //sets current index to the smallest value
-      ary[minInd] = oldVal; //sets the index of the smallest value to the old value of current index
+      int oldVal = data[x]; //temporarily holds the old value of current index to set up swapping
+      data[x] = data[minInd]; //sets current index to the smallest value
+      data[minInd] = oldVal; //sets the index of the smallest value to the old value of current index
     }
   }
-*/
 
-  //bubbleSort
-  public static void bubbleSort(int[] ary) {
-    int aryLen = ary.length;
+  /**Bubble sort of an int array.
+  *Upon completion, the elements of the array will be in increasing order.
+  *@param data the elements to be sorted.
+  */
+  public static void bubbleSort(int[] data) {
+    int aryLen = data.length;
     int firstNum, secNum, tempNum;
-    boolean fin = false;
-    while (fin == false) {
-      for (int s = 0; s < aryLen - 1; s++) {
-        firstNum = ary[s];
-        secNum = ary[s] + 1;
-        if (firstNum > secNum) {
-          tempNum = firstNum;
-          firstNum = secNum;
-          secNum = tempNum;
+    boolean go = true;
+    if (aryLen > 0) {
+      while (go) {
+        for (int s = 0; s < aryLen-1; s++) {
+          firstNum = data[s];
+          secNum = data[s+1];
+          if (firstNum > secNum) {
+            tempNum = firstNum;
+            data[s] = secNum;
+            data[s+1] = tempNum;
+          }
         }
-      }
-      for (int t = 0; t < aryLen - 1; t++) {
-        firstNum = ary[t];
-        secNum = ary[t]+1;
-        if (firstNum > secNum) break;
-        if (t == aryLen - 2 && firstNum < secNum) fin = true;
+        for (int t = 0; t < aryLen - 1; t++) {
+          if (data[t] > data[t+1]) {
+            break;
+          }
+          else if (t == aryLen - 2) {
+            go = false;
+          }
+        }
       }
   }
 }
@@ -56,26 +63,50 @@ public class Sorts {
   }
 
   public static void main(String[] args) {
-    int[] ary = {-2,-4,0,5,3,1};
-    selectionSort(ary);
-    System.out.println("Test 1: Should print -4,2,0,1,3,5");
-    System.out.println(toString(ary));
+    int[] sSort = {-2,-4,0,5,3,1};
+    System.out.println("Orignal: [-2,-4,0,5,3,1]");
+    selectionSort(sSort);
+    System.out.println("selectionSort 1: Should print [-4,2,0,1,3,5]");
+    System.out.println(toString(sSort));
 
     System.out.println();
 
-    int[] ary2 = {10000,-999,8,2,5};
-    selectionSort(ary2);
-    System.out.println("Test 2: Should print -999,2,5,8,10000");
-    System.out.println(toString(ary2));
+    int[] sSort2 = {10000,-999,8,2,5};
+    System.out.println("Original: [10000,-999,8,2,5]");
+    selectionSort(sSort2);
+    System.out.println("selectionSort 2: Should print [-999,2,5,8,10000]");
+    System.out.println(toString(sSort2));
 
     System.out.println();
 
-    int[] ary3 = {};
-    selectionSort(ary3);
-    System.out.println("Test 3: Should print nothing ");
-    System.out.println(toString(ary3));
-  }
+    int[] sSort3 = {};
+    System.out.println("Original: []");
+    selectionSort(sSort3);
+    System.out.println("selectionSort 3: Should print [] ");
+    System.out.println(toString(sSort3));
+
+    System.out.println();
+
+    int[] bSort = {5,1,12,-5,16};
+    System.out.println("Original: [5,1,12,-5,16]");
+    bubbleSort(bSort);
+    System.out.println("bubbleSort 1: Should print [-5,1,5,12,16]");
+    System.out.println(toString(bSort));
+
+    System.out.println();
+
+    int[] bSort2 = {30,5,2,0,-1,8};
+    System.out.println("Original: [30,5,2,0,-1,8]");
+    bubbleSort(bSort2);
+    System.out.println("bubbleSort 2: Should print [-1,0,2,5,8,30]");
+    System.out.println(toString(bSort2));
+
+    System.out.println();
+
+    int[] bSort3 = {};
+    System.out.println("Original: []");
+    bubbleSort(bSort3);
+    System.out.println("bubbleSort 3: Should print []");
+    System.out.println(toString(bSort3));
+    }
 }
-
-//forgot to continously commit while working on this and only realized after!
-//will commit more next time
