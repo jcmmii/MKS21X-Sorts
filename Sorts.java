@@ -1,4 +1,7 @@
 public class Sorts {
+
+/*
+  //selectionSort
   public static void selectionSort(int[] ary) {
     for (int x = 0; x < ary.length; x++) {
       int min = ary[x]; //assumes smallest value in array is current value
@@ -14,6 +17,31 @@ public class Sorts {
       ary[minInd] = oldVal; //sets the index of the smallest value to the old value of current index
     }
   }
+*/
+
+  //bubbleSort
+  public static void bubbleSort(int[] ary) {
+    int aryLen = ary.length;
+    int firstNum, secNum, tempNum;
+    boolean fin = false;
+    while (fin == false) {
+      for (int s = 0; s < aryLen - 1; s++) {
+        firstNum = ary[s];
+        secNum = ary[s] + 1;
+        if (firstNum > secNum) {
+          tempNum = firstNum;
+          firstNum = secNum;
+          secNum = tempNum;
+        }
+      }
+      for (int t = 0; t < aryLen - 1; t++) {
+        firstNum = ary[t];
+        secNum = ary[t]+1;
+        if (firstNum > secNum) break;
+        if (t == aryLen - 2 && firstNum < secNum) fin = true;
+      }
+  }
+}
 
   public static String toString(int[] ary) {
     String ret = "";
@@ -46,7 +74,6 @@ public class Sorts {
     selectionSort(ary3);
     System.out.println("Test 3: Should print nothing ");
     System.out.println(toString(ary3));
-
   }
 }
 
