@@ -55,13 +55,15 @@ public class Sorts {
   *@param data the elements to be sorted.
   */
   public static void insertionSort(int[] data) {
-    int length = 0;
     int temp;
+    int old, hold;
     for (int x = 0; x < data.length; x++) {
       temp = data[x];
       for (int y = x; y > 0; y--) {
-        if (temp < data[y]) {
-          ///insert and shift;
+        if (temp < data[y-1]) {
+          hold = data[y-1];
+          data[y-1] = temp;
+          data[y] = hold;
         }
       }
     }
@@ -80,7 +82,7 @@ public class Sorts {
   }
 
   public static void main(String[] args) {
-    int[] sSort = {-2,-4,0,5,3,1};
+  /*  int[] sSort = {-2,-4,0,5,3,1};
     System.out.println("Orignal: [-2,-4,0,5,3,1]");
     selectionSort(sSort);
     System.out.println("selectionSort 1: Should print [-4,2,0,1,3,5]");
@@ -125,5 +127,13 @@ public class Sorts {
     bubbleSort(bSort3);
     System.out.println("bubbleSort 3: Should print []");
     System.out.println(toString(bSort3));
+
+  */  System.out.println();
+
+    int[] iSort = {4,3,2,10,12,1,5,6};
+    System.out.println("Original: [4,3,2,10,12,1,5,6]");
+    insertionSort(iSort);
+    System.out.println("insertionSort 1: Should print [1,2,3,4,5,6,10,12]");
+    System.out.println(toString(iSort));
     }
 }
