@@ -50,6 +50,23 @@ public class Sorts {
   }
 }
 
+  /**Insertion sort of an int array.
+  *Upon completion, the elements of the array will be in increasing order.
+  *@param data the elements to be sorted.
+  */
+  public static void insertionSort(int[] data) {
+    int length = 0;
+    int temp;
+    for (int x = 0; x < data.length; x++) {
+      temp = data[x];
+      for (int y = x; y > 0; y--) {
+        if (temp < data[y]) {
+          ///insert and shift;
+        }
+      }
+    }
+  }
+
   public static String toString(int[] ary) {
     String ret = "";
     if (ary.length > 0) {
