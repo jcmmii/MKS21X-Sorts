@@ -26,25 +26,25 @@ public class Sorts {
   public static void bubbleSort(int[] data) {
     int aryLen = data.length;
     int firstNum, secNum, tempNum;
-    boolean go = true;
-    if (aryLen > 0) {
+    boolean go = true; //assumes everything isn't sorted yet, go is true
+    if (aryLen > 0) { //if aryLen is 0, then toString returns "[]" by default
       while (go) {
         for (int s = 0; s < aryLen-1; s++) {
-          firstNum = data[s];
+          firstNum = data[s]; //holds in value at current index, and the value immediately after
           secNum = data[s+1];
           if (firstNum > secNum) {
-            tempNum = firstNum;
+            tempNum = firstNum; //swaps by using a temporary variable
             data[s] = secNum;
             data[s+1] = tempNum;
           }
         }
-        for (int t = 0; t < aryLen - 1; t++) {
-          if (data[t] > data[t+1]) {
-            break;
+        for (int t = 0; t < aryLen - 1; t++) { //checks through array and if it is sorted
+          if (data[t] > data[t+1]) { //if there is any case of current is bigger than next, breaks
+            break;                   //and the previous for loop is repeated
           }
           else if (t == aryLen - 2) {
-            go = false;
-          }
+            go = false;              //this means the next value is bigger, and that every value behind this index
+          }                          //are smaller. Stops while loop
         }
       }
   }
@@ -55,14 +55,13 @@ public class Sorts {
   *@param data the elements to be sorted.
   */
   public static void insertionSort(int[] data) {
-    int temp;
-    int old, hold;
+    int temp, old, hold;
     for (int x = 0; x < data.length; x++) {
-      temp = data[x];
-      for (int y = x; y > 0; y--) {
-        if (temp < data[y-1]) {
-          hold = data[y-1];
-          data[y-1] = temp;
+      temp = data[x]; //takes in value of current index
+      for (int y = x; y > 0; y--) { //sets y to x, and counts backwards
+        if (temp < data[y-1]) { //if the previous value is bigger, then swaps (by using a temporary var)
+          hold = data[y-1];     //keeps on swapping until the previous value is smaller, at which
+          data[y-1] = temp;     //nothing is done until y becomes 0
           data[y] = hold;
         }
       }
@@ -82,7 +81,7 @@ public class Sorts {
   }
 
   public static void main(String[] args) {
-  /*  int[] sSort = {-2,-4,0,5,3,1};
+    int[] sSort = {-2,-4,0,5,3,1};
     System.out.println("Orignal: [-2,-4,0,5,3,1]");
     selectionSort(sSort);
     System.out.println("selectionSort 1: Should print [-4,2,0,1,3,5]");
@@ -128,12 +127,20 @@ public class Sorts {
     System.out.println("bubbleSort 3: Should print []");
     System.out.println(toString(bSort3));
 
-  */  System.out.println();
+    System.out.println();
 
     int[] iSort = {4,3,2,10,12,1,5,6};
     System.out.println("Original: [4,3,2,10,12,1,5,6]");
     insertionSort(iSort);
     System.out.println("insertionSort 1: Should print [1,2,3,4,5,6,10,12]");
     System.out.println(toString(iSort));
+
+    System.out.println();
+
+    int[] iSort2 = {10,5,3,5,7,10,20,0};
+    System.out.println("Original: [10,5,3,5,7,10,20,0]");
+    insertionSort(iSort2);
+    System.out.println("insertionSort 2: Should print [0,3,5,5,7,10,10,20]");
+    System.out.println(toString(iSort2));
     }
 }
