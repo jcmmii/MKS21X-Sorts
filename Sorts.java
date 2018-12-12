@@ -55,16 +55,17 @@ public class Sorts {
   *@param data the elements to be sorted.
   */
   public static void insertionSort(int[] data) {
-    int temp, old, hold;
-    for (int x = 0; x < data.length; x++) {
-      temp = data[x]; //takes in value of current index
-      for (int y = x; y > 0; y--) { //sets y to x, and counts backwards
-        if (temp < data[y-1]) { //if the previous value is bigger, then swaps (by using a temporary var)
-          hold = data[y-1];     //keeps on swapping until the previous value is smaller, at which
-          data[y-1] = temp;     //nothing is done until y becomes 0
-          data[y] = hold;
-        }
+    for (int x = 1; x < data.length; x++) {
+      int a = x;                                //counting variable
+      int hold = data[x];                       //temporary var hold to hold value of current index
+      while (a - 1 >= 0 && hold < data[a-1]) {  //while the previous index maxes out at zero (prevents indexoutofbounds),
+                                                //and while the value of currrent index is less than the previous value
+        data[a] = data[a-1];                    //replaces current value with the previous value (essentially shifting right)
+        a--;                                    //goes back an index again and repeats
       }
+      data[a] = hold;                           //finally, when there isn't anything to the left (index is 0) or when
+                                                //the previous index is smaller than the value of hold
+                                                //the current index is replaced by hold
     }
   }
 
@@ -142,5 +143,13 @@ public class Sorts {
     insertionSort(iSort2);
     System.out.println("insertionSort 2: Should print [0,3,5,5,7,10,10,20]");
     System.out.println(toString(iSort2));
+
+    System.out.println();
+
+    int[] iSort3 = {};
+    System.out.println("Original: []");
+    insertionSort(iSort3);
+    System.out.println("insertionSort 3: Should print []");
+    System.out.println(toString(iSort3));
     }
 }
